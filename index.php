@@ -18,8 +18,9 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			
-			$text = get();
-			echo $text;
+			$res = get();
+			$otext = json_decode($res);
+			$text = $otext[0]->payload;
 
 			$messages = [
 				'type' => 'text',
