@@ -19,6 +19,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			
 			$text = get();
+			echo $text;
 
 			$messages = [
 				'type' => 'text',
