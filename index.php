@@ -18,15 +18,27 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			
-			if ($text == "on") {
-
-				put("https://api.netpie.io/topic/PudzaSOI/test?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d","11");
+			if ($text == "on" || $text == "off") {
+				if ($text == "on") {
+					$reply = "Turn On";
+					$cmd = "11"
+				}
+				if ($text == "off") {
+					$reply = "Turn Off";
+					$cmd = "11"
+				}
+	
+				// send to test topic
+				put("https://api.netpie.io/topic/PudzaSOI/test?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d",$cmd);
 				$messages = [
 					'type' => 'text',
-					'text' => 'Turn on'
+					'text' => $reply
 				];
 
-				// Make a POST Request to Messaging API to reply to sender
+
+
+				// Reply to ...
+				// == Make a POST Request to Messaging API to reply to sender
 				$url = 'https://api.line.me/v2/bot/message/reply';
 				$data = [
 					'replyToken' => $replyToken,
