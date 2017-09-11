@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
 				}
 	
 				// send to test topic
-				put("https://api.netpie.io/topic/PudzaSOI/test?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d",$cmd);
+				put("https://api.netpie.io/topic/PudzaSOI/test_cmd?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d",$cmd);
 				$messages = [
 					'type' => 'text',
 					'text' => $reply
@@ -62,6 +62,7 @@ if (!is_null($events['events'])) {
 	}
 }
 echo "OK";
+
 function get() {
 	 $url = "https://api.netpie.io/topic/PudzaSOI/test?auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d";
 	 $ch = curl_init($url);

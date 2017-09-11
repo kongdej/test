@@ -16,7 +16,7 @@ def connection():
 
 def subscription(topic,message):
   print topic+"="+message
-  if topic == "/PudzaSOI/test" :
+  if topic == "/PudzaSOI/test_cmd" :
       print "Recv:" + message
     
 
@@ -27,12 +27,13 @@ microgear.setalias("test")
 microgear.on_connect = connection
 microgear.on_message = subscription
 microgear.on_disconnect = disconnect
-microgear.subscribe("/test");
+microgear.subscribe("/test_data");
+microgear.subscribe("/test_cmd");
 
 microgear.connect(False)
 
 i=0
 while True:
-#  i = i +1
-#  microgear.publish("/test",i,{"retain":True})
+  i = i +1
+  microgear.publish("/test_data",i,{"retain":True})
   time.sleep(1)  
