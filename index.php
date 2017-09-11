@@ -21,11 +21,11 @@ if (!is_null($events['events'])) {
 			if ($text == "on" || $text == "off") {
 				if ($text == "on") {
 					$reply = "Turn On";
-					$cmd = "11"
+					$cmd = "11";
 				}
 				if ($text == "off") {
 					$reply = "Turn Off";
-					$cmd = "11"
+					$cmd = "11";
 				}
 	
 				// send to test topic
