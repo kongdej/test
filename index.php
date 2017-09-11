@@ -23,7 +23,7 @@ if (!is_null($events['events'])) {
 					$reply = "Turn On";
 					$cmd = "11";
 				}
-				if ($text == "off") {
+				else if ($text == "off") {
 					$reply = "Turn Off";
 					$cmd = "10";
 				}
