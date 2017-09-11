@@ -35,6 +35,6 @@ microgear.connect(False)
 i=0
 while True:
   i = i + 1
-  d = 't='+str(i)+',ec='+str(i+1)+',tb='+str(i+2)+',ph='+str(i+3)
+  d = 't='+str(i)+',ec='+str(i+1)+','+str(i+2)+',ph='+str(i+3)
   microgear.publish("/test_data",d,{"retain":True})
   time.sleep(1)  
