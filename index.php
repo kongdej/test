@@ -4,6 +4,10 @@ $access_token = 'd5RKoHxy1wwRg0B8Xzzcns5+iarUYRVn5BGaj1HvR2Zn1huy+rVr/Q8RoPdSqxr
 $url_cmd  = "https://api.netpie.io/topic/PudzaSOI/test_cmd?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d";
 $url_data = "https://api.netpie.io/topic/PudzaSOI/test_data?auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d";
 
+// Build message to reply back
+$cmd_word = array("on","off");
+$inf_word = array("t","ec","tb","ph","tbv");
+
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -19,10 +23,6 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
-			// Build message to reply back
-			$cmd_word = array("on","off");
-			$inf_word = array("t","ec","tb","ph","tbv");
 			
 			if (in_array($text, $cmd_word)) {
 				if ($text == "on") {
@@ -54,11 +54,15 @@ if (!is_null($events['events'])) {
 				else if ($text == "ec") {
 					$reply = $datas[1] ." mS/cm";
 				}
-				else if ($text == "tb") {
+				else if ($text == "tbv") {
 					$reply = $datas[2]." V";
 				}
 				else if ($text == "ph") {
 					$reply = $datas[3];
+				}
+				else if ($text == "tbv") {
+					$tub = $datas[2]*1000;
+					$reply = $tub." mg/L";
 				}
 
 				$messages = [
