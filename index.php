@@ -62,7 +62,8 @@ if (!is_null($events['events'])) {
 				}
 				else if ($text == "tb") {
 					$tub = (float)$datas[2]*1000;
-					$reply = $tub." mg/L";
+					$tubformat = sprintf("%.2f mg/L", $tub);
+					$reply = $tubformat;
 				}
 
 				$messages = [
