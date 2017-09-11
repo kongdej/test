@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 			
 			if ($text == "on") {
 
-				put("https://api.netpie.io/topic/PudzaSOI/test?retain","11");
+				put("https://api.netpie.io/topic/PudzaSOI/test?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d","11");
 				$messages = [
 					'type' => 'text',
 					'text' => 'Turn on'
