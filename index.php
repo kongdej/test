@@ -18,14 +18,12 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			
-			if ($text == "no?") {
-				$res = get();
-				$otext = json_decode($res);
-				$text = $otext[0]->payload;
+			if ($text == "on") {
 
+				put("https://api.netpie.io/topic/PudzaSOI/test?retain","11");
 				$messages = [
 					'type' => 'text',
-					'text' => $text
+					'text' => 'Turn on'
 				];
 
 				// Make a POST Request to Messaging API to reply to sender
@@ -65,3 +63,28 @@ function get() {
 	 curl_close ($ch);
 	 return $response;
 }
+
+     function put($url,$tmsg)
+{
+                 
+             $ch = curl_init($url);
+ 
+             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+             
+             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+             
+             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+             
+             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+             
+             curl_setopt($ch, CURLOPT_POSTFIELDS, $tmsg);
+ 
+             curl_setopt($ch, CURLOPT_USERPWD, "{YOUR NETPIE.IO APP KEY}:{YOUR NETPIE.IO APP SECRET}");
+             
+             $response = curl_exec($ch);
+             
+             curl_close ($ch);
+             
+             return $response;
+}
+

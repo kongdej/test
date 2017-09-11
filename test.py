@@ -16,6 +16,8 @@ def connection():
 
 def subscription(topic,message):
   print topic+"="+message
+  if topic == "/PudzaSOI/test" :
+      print "Recv:" + message
     
 
 def disconnect():
@@ -31,6 +33,6 @@ microgear.connect(False)
 
 i=0
 while True:
-  i = i +1
-  microgear.publish("/test",i,{"retain":True})
+#  i = i +1
+#  microgear.publish("/test",i,{"retain":True})
   time.sleep(1)  
