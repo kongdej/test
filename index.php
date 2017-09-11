@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
 				}
 				if ($text == "off") {
 					$reply = "Turn Off";
-					$cmd = "11";
+					$cmd = "10";
 				}
 	
 				// send to test topic
