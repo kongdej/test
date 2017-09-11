@@ -1,6 +1,10 @@
 <?php
 $access_token = 'd5RKoHxy1wwRg0B8Xzzcns5+iarUYRVn5BGaj1HvR2Zn1huy+rVr/Q8RoPdSqxrBgEmz8ync8AlpOIGCqRYiD4OjXgjjVjN/fK+zaYEYJawIGtt4lRgRVXYYxHeJCDEX5PYZVF/wTB78cGnR6XWmcAdB04t89/1O/w1cDnyilFU=';
 
+$url_cmd  = "https://api.netpie.io/topic/PudzaSOI/test_cmd?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d";
+$url_data = "https://api.netpie.io/topic/PudzaSOI/test_data?auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d";
+
+
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -31,7 +35,7 @@ if (!is_null($events['events'])) {
 				}
 	
 				// send to test topic
-				put("https://api.netpie.io/topic/PudzaSOI/test_cmd?retain&auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d",$cmd);
+				put($url_cmd,$cmd);
 				$messages = [
 					'type' => 'text',
 					'text' => $reply
@@ -39,7 +43,7 @@ if (!is_null($events['events'])) {
 			 }
 
 			 if (in_array($text, $inf_word)) {
-			 	$res = get("https://api.netpie.io/topic/PudzaSOI/test_data?auth=xXCgD7V2IbWlArR:QgrhkLHJ3xbbm58B9TsVtK15d");
+			 	$res = get($url_data);
 				$otext = json_decode($res);
 				$payload = $otext[0]->payload;
 				$datas = explode(',', $payload);
@@ -98,7 +102,6 @@ function get($url) {
 	 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 	 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-//	 curl_setopt($ch, CURLOPT_POSTFIELDS, $tmsg);
 	 curl_setopt($ch, CURLOPT_USERPWD, "{YOUR NETPIE.IO APP KEY}:{YOUR NETPIE.IO APP SECRET}");
 	 $response = curl_exec($ch);
 	 curl_close ($ch);
