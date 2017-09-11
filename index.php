@@ -61,7 +61,7 @@ if (!is_null($events['events'])) {
 					$reply = $datas[3];
 				}
 				else if ($text == "tb") {
-					$tub = float($datas[2])*1000;
+					$tub = (float)$datas[2]*1000;
 					$reply = $tub." mg/L";
 				}
 
